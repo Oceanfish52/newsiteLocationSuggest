@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/admin_css.css">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Upload files to update site search application.</h1>
+        <hr class="my-4">
+
+        <form role="form" action="{{url_for('upload_file_cov')}}" method="POST" enctype="multipart/form-data">
+            <label for="inputGroupFile1"><b>Upload Coverage Analysis from HUAWEI SMART CARE.</b></label>
+            <div class="input-group" id="uploadInput">
+                <div class="custom-file">
+                    <input type="file" name="file" accept=".csv" class="custom-file-input" id="inputGroupFile1" aria-describedby="inputGroupFileAddon04">
+                    <label class="custom-file-label" for="inputGroupFile1">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" role="button">Upload</button>
+                </div>
+            </div>
+        </form>
+        <p>List files on server:</p>
+        {% for file in raw_files_cov['files'] %}
+            <li>{{ file }}</li>
+        {% endfor %}
+        <br>
+        <form role="form" action="{{url_for('upload_file_traff')}}" method="POST" enctype="multipart/form-data">
+            <label for="inputGroupFile2"><b>Upload Traffic Analysis files from HUAWEI SMART CARE.</b></label>
+            <div class="input-group" id="uploadInput2">
+                <div class="custom-file">
+                    <input type="file" name="file" accept=".csv" class="custom-file-input" id="inputGroupFile2" aria-describedby="inputGroupFileAddon04">
+                    <label class="custom-file-label" for="inputGroupFile2">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" role="button">Upload</button>
+                </div>
+            </div>
+        </form>
+        <p>List files on server:</p>
+        {% for file in raw_files_traff['files'] %}
+            <li>{{ file }}</li>
+        {% endfor %}
+
+    <hr class="my-4">
+      <div id="filesSelectForm" class="form-group">
+        <label for="dropdownList1">Coverage files select</label>
+        <select class="form-control" id="dropdownList1"></select>
+          <br>
+        <label for="dropdownList2">Traffic files select</label>
+        <select class="form-control" id="dropdownList2"></select>
+          <br>
+          <p><b>Coverage filter:</b></p>
+            <form class="form-inline" id="filterForm">
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="filterSize" class="sr-only">Filter size (grid)</label>
+                <input type="number" class="form-control" id="filterSize" value="8">
+              </div>
+              <button type="button" class="btn btn-primary mb-2" id="createFilterButton">Create filter</button>
+            </form>
+
+          <label for="inputFilename">Output file name:</label>
+        <label for="inputFilename" class="sr-only">Filename.csv</label>
+        <input type="text" class="form-control" id="inputFilename" placeholder="Filename.csv">
+          <button type="button" class="btn btn-success mb-2" role="button">Generate result</button>
+      </div>
+
+    <hr class="my-4">
+        <p>Current result files:</p>
+        {% for file in result_files['files'] %}
+            <li>{{ file }}</li>
+        {% endfor %}
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="static/js/admin.js"></script>
+</body>
+</html>
