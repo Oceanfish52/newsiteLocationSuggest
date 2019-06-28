@@ -6,3 +6,4 @@ ref: https://realpython.com/flask-by-example-implementing-a-redis-task-queue/?fb
 3) run web application using app.py => "python app.py"
 
 <b>To use admin page</b>
+![alt text](https://raw.githubusercontent.com/witchapog/newsiteLocationSuggest/master/Trafficestimationbycoordinates.jpeg)
