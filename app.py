@@ -9,7 +9,7 @@ from rq.job import Job
 from worker import redis_con
 
 UPLOAD_FOLDER = 'raw/'
-ALLOWED_EXTENSIONS = set(['csv'])
+ALLOWED_EXTENSIONS = {'csv'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
